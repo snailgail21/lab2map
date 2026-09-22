@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+           crossorigin=""/>
+
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+           crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [41.9648422,-87.7096963],
+              zoom: 15
+          });
+
+          L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+               attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+               maxZoom: 15,
+               minZoom: 15
+            }).addTo(map);
+			
+		var restaurantIcon = L.icon({
+		iconUrl: 'restaurant.png', // url that links to the icon image file, saved in the same folder as the current page 
+		iconSize:     [30, 30], // size of the icon image in pixels
+		iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+		popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+			});
+		
+		var marker1 = L.marker([41.9694547,-87.7088002], {icon: restaurantIcon, alt: "Icon of a restaurant building with a fork and spoon on the sign"}).addTo(map);
+		var marker2 = L.marker([41.9613972,-87.7104439], {icon: restaurantIcon, alt: 'Icon of a restaurant building with a fork and spoon on the sign'}).addTo(map);
+		var marker3 = L.marker([41.9667805,-87.7137739], {icon: restaurantIcon, alt: 'Icon of a restaurant building with a fork and spoon on the sign'}).addTo(map);
+		
+		var pic1 = '<img src="https://tarasmulticulturaltable.com/wp-content/uploads/2017/07/Mul-Naengmyeon-2-of-3-1024x683.jpg" alt="Naengmyeon is a Korean dish consisting of buckwheat noodles, cucumbers, a hard boiled egg, and slices of beef in a cold, tangy beef broth" width="200">';
+		var pic2 = '<img src="https://media-cdn.tripadvisor.com/media/photo-s/1a/24/92/44/khao-na-ped-roasted-duck.jpg" alt="Khao Na Ped is a Thai dish consisting of marinated roast duck over rice served with steamed broccoli and spinach" width="200">';
+		var pic3 = '<img src="https://d1w7312wesee68.cloudfront.net/VPqs0p24CHpizilyuP7QGemmN6Jj0c9j2YINhO0D4bI/resize:fit:720:720/plain/s3://toasttab/menu_service/restaurants/8692957e-0954-4805-9871-37bbbfea104c/MenuItem/acd1d967-fbc9-401a-a1ae-236c633e8d82.jpg" alt="Oromo is a central-asian steamed pie dish consisting of sheets of flat dumpling dough stuffed with minced meat, potatoes, and onions" width="200">';
+
+		marker1.bindPopup('<p style="color:#873B01; background-color:#B2FF82; font-weight:bold"> My favorite dish at Kim\'s Home Cooking is their Naengmyeon </p>' + pic1);
+		marker2.bindPopup('<p style="color:#F09000; font-weight:bold"> My favorite dish at Chim Thai Cuisine is their Khao Na Ped </p>' + pic2);
+		marker3.bindPopup('<p style="color:#009E10; font-weight:bold"> My favorite dish at Arzan Cafe is their Oromo </p>' + pic3);
+
+        </script>
+   </body>
+</html>
